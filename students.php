@@ -1,7 +1,7 @@
 <?php  
 	include("includes/header.php");
-	$title = "Home";
+	$title = "Students";
 ?>
-		<h1>Hello World</h1>
+		<h1>Students</h1>
 	</body>
 </html>

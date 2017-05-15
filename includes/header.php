@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CS 340: Final</title>
+		<title><?php echo $title ?></title>
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -23,7 +23,12 @@
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+	        <li class="active"><a href="students.php">Students <span class="sr-only">(current)</span></a></li>
+	        <li><a href="teachers.php">Teachers </a>
+	        </li>
+	        <li><a href="classrooms.php">Classrooms </a>
+	        </li>
+	        <li><a href="lessons.php">Lessons </a>
 	        </li>
 	      </ul>
 	      </div><!-- /.navbar-collapse -->
