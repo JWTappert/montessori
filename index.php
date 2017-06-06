@@ -1,6 +1,6 @@
 <?php  
-	include("includes/header.php");
 	$title = "Home";
+	include("includes/header.php");
 ?>
 		<h1>Hello World</h1>
 	</body>
