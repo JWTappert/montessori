@@ -46,7 +46,7 @@
 							<label for="classroom_id">Classroom</label>
 							<input class="form-control" type="text" name="classroom_id" value="<?php echo $updateStudent->classroom_id; ?>">
 						</div>
-						<button type="submit" name="update">Update</button>
+						<button class="btn btn-primary" type="submit" name="update">Update</button>
 					</form>
 				</div>
 
