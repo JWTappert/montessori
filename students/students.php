@@ -100,7 +100,7 @@
 	 		$idToDelete = $_GET["id"];
 
 	 		//create a query
-	 		$delete_query = $db->query("DELETE FROM users WHERE id = $idToDelete");
+	 		$delete_query = $db->query("DELETE FROM student WHERE student_id = $idToDelete");
 
 	 		//test to see if it was successful
 	 		if($delete_query) {
