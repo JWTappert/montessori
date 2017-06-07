@@ -10,9 +10,8 @@
 		public $age_group;
 		public $classroom_id;
 
-		public function __construct($id, $first, $last, $dob, $ageGroup, $classroom)
+		public function __construct($first, $last, $dob, $ageGroup, $classroom)
 		{
-			$this->id = $id;
 			$this->first_name = $first;
 			$this->last_name = $last;
 			$this->birth_date = $dob;
@@ -28,7 +27,8 @@
 			$results = $db->query("SELECT * FROM student;");
 
 			while ($row = $results->fetch_assoc()) {
-				$student = new Student($row["student_id"], $row["first_name"], $row["last_name"], $row["birth_date"], $row["age_group"], $row["classroom_id"]);
+				$student = new Student($row["first_name"], $row["last_name"], $row["birth_date"], $row["age_group"], $row["classroom_id"]);
+				$student->id = $row["student_id"];
 				array_push($all_students, $student);
 			}
 			$results->free();
@@ -48,7 +48,7 @@
 
 			$create_query = "INSERT INTO student (first_name, last_name, birth_date, age_group, classroom_id) VALUES ('{$this->first_name}', '{$this->last_name}', '{$this->birth_date}', '{$this->age_group}', '{$this->classroom_id}')";
 
-			if(mysql_query($db, $create_query)) {
+			if(mysqli_query($db, $create_query)) {
 				return true;
 			} else {
 				return false;

@@ -3,7 +3,7 @@
 	include("includes/header.php");
 	include("students/students.php");
 
-	$student = new Student(NULL, NULL, NULL, NULL, NULL, NULL);
+	$student = new Student(NULL, NULL, NULL, NULL, NULL);
 	$list_students = $student->loadStudents();
 ?>
 
@@ -24,24 +24,37 @@
 								<th>Birthday</th>
 								<th>Age Group</th>
 								<th>Classroom</th>
+								<th><a href="students/form.php" class="btn btn-primary" role="button">New</a></th>
 							</tr>
-							<?php foreach ($list_students as $value) {
+							<?php foreach ($list_students as $student) {
 								echo "<tr>";
+
 								echo "<td>";
-								echo "<a href=\"students/update.php?id=" . $value->id . "\">" . $value->first_name . "</a>";
+								echo "<a href=\"students/update.php?id=" . $student->id . "\">";
+								echo $student->first_name;
+								echo "</a>";
 								echo "</td>";
+
 								echo "<td>";
-								echo $value->last_name;
+								echo $student->last_name;
 								echo "</td>";
+
 								echo "<td>";
-								echo $value->birth_date;
+								echo $student->birth_date;
 								echo "</td>";
+
 								echo "<td>";
-								echo $value->age_group;
+								echo $student->age_group;
 								echo "</td>";
+
 								echo "<td>";
-								echo $value->classroom_id;
+								echo $student->classroom_id;
 								echo "</td>";
+
+								echo "<td>";
+								echo "<a class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
+								echo "</td>";
+
 								echo "</tr>";
 							}  ?>
 						</table>
