@@ -24,12 +24,11 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="/students.php">Students <span class="sr-only">(current)</span></a></li>
-	        <li><a href="/teachers.php">Teachers </a>
-	        </li>
-	        <li><a href="/classrooms.php">Classrooms </a>
-	        </li>
-	        <li><a href="/lessons.php">Lessons </a>
-	        </li>
+	        <li><a href="/teachers.php">Teachers </a></li>
+	        <li><a href="/assistants.php">Assistants </a></li>
+	        <li><a href="/classrooms.php">Classrooms </a></li>
+	        <li><a href="/lessons.php">Lessons </a></li>
+	        <li><a href="/subjects.php">Subjects </a></li>
 	      </ul>
 	      </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
