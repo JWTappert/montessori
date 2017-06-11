@@ -19,10 +19,10 @@
 		public static function loadLessons() {
 			global $db;
 			$all_lessons = [];
-			$results = $db->query("select l.lesson_id, l.name, l.description, s.type
-									from lesson l, subject s
-									where l.type_id = s.subject_id
-									order by s.type");
+			$results = $db->query("SELECT l.lesson_id, l.name, l.description, s.type
+									FROM lesson l, subject s
+									WHERE l.type_id = s.subject_id
+									ORDER BY s.type");
 
 			while ($row = $results->fetch_assoc()) {
 				$lesson = new Lesson($row["name"], $row["description"], $row["type"]);
