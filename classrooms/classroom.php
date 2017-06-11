@@ -18,6 +18,9 @@
 		public static function loadClassrooms() {
 			global $db;
 			$all_classrooms = [];
+			$defaultClassroom = new Classroom(NULL, NULL, NULL);
+			$defaultClassroom->id = 0;
+			array_push($all_classrooms, $defaultClassroom);
 			$results = $db->query("SELECT c.classroom_id, c.classroom_number, CONCAT(t.first_name, ' ', t.last_name) AS 'Lead Teacher', CONCAT(a.first_name, ' ', a.last_name) AS 'Assistant'
 									FROM classroom c, teacher t, assistant a
 									WHERE c.lead_id = t.teacher_id
@@ -30,7 +33,6 @@
 				array_push($all_classrooms, $classroom);
 			}
 			$results->free();
-			$db->close();
 			return $all_classrooms;
 		}
 
@@ -42,11 +44,12 @@
 			$this->lead = $db->real_escape_string($this->lead);
 			$this->assistant = $db->real_escape_string($this->assistant);
 
-			$create_query = "INSERT INTO classroom (classroom_number, lead, assistant) VALUES ('{$this->classroom_number}', '{$this->lead}', '{$this->assistant}')";
+			$create_query = "INSERT INTO classroom (classroom_number, lead_id, aid_id) VALUES ('{$this->classroom_number}', '{$this->lead}', '{$this->assistant}')";
 
 			if(mysqli_query($db, $create_query)) {
 				return true;
 			} else {
+				echo mysqli_errno($db) . ": " . mysqli_error($db) . "\n";
 				return false;
 			}
 		}

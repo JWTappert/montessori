@@ -16,13 +16,16 @@
 			$all_subjects = [];
 			$results = $db->query("SELECT * FROM subject;");
 
+			$defaultSubject = new Subject(NULL);
+			$defaultSubject->subject_id = 0;
+			array_push($all_subjects, $defaultSubject);
+
 			while ($row = $results->fetch_assoc()) {
 				$subject = new Subject($row["type"]);
 				$subject->subject_id = $row["subject_id"];
 				array_push($all_subjects, $subject);
 			}
 			$results->free();
-			$db->close();
 			return $all_subjects;
 		}
 
@@ -30,7 +33,6 @@
 			global $db;
 
 			// escape special characters to help prevents XSS
-			$this->subject_id = $db->real_escape_string($this->subject_id);
 			$this->type = $db->real_escape_string($this->type);
 
 			$create_query = "INSERT INTO subject (subject_id, type) VALUES ('{$this->subject_id}', '{$this->type}')";

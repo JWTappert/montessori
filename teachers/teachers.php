@@ -24,15 +24,20 @@
 		public static function loadTeachers() {
 			global $db;
 			$all_teachers = [];
-			$results = $db->query("SELECT * FROM teacher;");
+			$defaultTeacher = new Teacher(NULL, NULL, NULL, NULL, NULL, NULL);
+			$defaultTeacher->id = 0;
+			array_push($all_teachers, $defaultTeacher);
+			$results = $db->query("SELECT t.teacher_id, t.first_name, t.last_name, t.birth_date, t.phone, t.email, c.classroom_id, c.classroom_number
+									FROM teacher t, classroom c
+									WHERE t.classroom_id = c.classroom_id
+									ORDER BY t.teacher_id");
 
 			while ($row = $results->fetch_assoc()) {
-				$teacher = new Teacher($row["first_name"], $row["last_name"], $row["birth_date"], $row["phone"], $row["email"], $row["classroom_id"]);
+				$teacher = new Teacher($row["first_name"], $row["last_name"], $row["birth_date"], $row["phone"], $row["email"], $row["classroom_number"]);
 				$teacher->id = $row["teacher_id"];
 				array_push($all_teachers, $teacher);
 			}
 			$results->free();
-			$db->close();
 			return $all_teachers;
 		}
 

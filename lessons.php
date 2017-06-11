@@ -5,6 +5,7 @@
 
 	$lesson = new Lesson(NULL, NULL, NULL);
 	$list_lessons = $lesson->loadLessons();
+	$db->close();
 ?>
 
 <div class="container">

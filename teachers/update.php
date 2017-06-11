@@ -2,7 +2,8 @@
 	$title = "Update Teacher Info";
 	include("../includes/header.php");
 	include("../teachers/teachers.php");
-
+	include("../classrooms/classroom.php");
+	
 	$updateTeacher = new Teacher(NULL, NULL, NULL, NULL, NULL, NULL);
 	$updateTeacher->displayTeacherInfo($_GET["id"]);
 
@@ -14,6 +15,9 @@
 			echo "ERROR: Could not execute"; //. mysqli_error($db);
 		}
 	}
+	$classroom = new Classroom(NULL, NULL, NULL);
+	$list_classrooms = $classroom->loadClassrooms();
+	$db->close();
 ?>
 
 <div class="container">
@@ -49,10 +53,13 @@
 						<div class="form-group">
 							<label for="classroom_id">Classroom</label>
 							<select class="form-control" type="text" name="classroom_id">
-								<option value="0">Select...</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+								<?php for ($i = 1; $i < sizeof($list_classrooms); $i++) {
+									if ($i == $updateTeacher->classroom_id) {
+										echo "<option value=" . $i . " selected='selected'>" . $list_classrooms[$i]->classroom_number . "</option>";
+									}else{
+										echo "<option value=" . $i . ">" . $list_classrooms[$i]->classroom_number . "</option>";
+									}
+								}?>
 							</select>
 						</div>
 						<button class="btn btn-success" type="submit" name="update">Update</button>

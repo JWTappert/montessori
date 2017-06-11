@@ -1,5 +1,10 @@
 <?php
+	$title = "New Lesson";
 	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+	include $_SERVER['DOCUMENT_ROOT'] . '/subjects/subject.php';
+
+	$subject = new Subject(NULL);
+	$list_subjects = $subject->loadSubjects();
 ?>
 
 <div class="container">
@@ -23,7 +28,11 @@
 						</div>
 						<div class="form-group">
 							<label for="type_id">Type</label>
-							<input class="form-control" type="text" name="type_id" placeholder="Type">
+							<select class="form-control" type="text" name="type_id">
+								<?php for ($i = 1; $i < sizeof($list_subjects); $i++) {
+									echo "<option value=" . $list_subjects[$i]->subject_id . ">" . $list_subjects[$i]->type . "</option>";
+								}?>
+							</select>
 						</div>
 						<button class="btn btn-danger" type="submit">Create</button>
 					</form>

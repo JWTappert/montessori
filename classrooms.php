@@ -5,6 +5,7 @@
 
 	$classroom = new Classroom(NULL, NULL, NULL);
 	$list_classrooms = $classroom->loadClassrooms();
+	$db->close();
 ?>
 
 <div class="container">
@@ -24,23 +25,23 @@
 								<th>Assistant</th>
 								<th><a href="classrooms/form.php" class="btn btn-warning" role="button">New</a></th>
 							</tr>
-							<?php foreach ($list_classrooms as $classroom) {
+							<?php for ($i = 1; $i < sizeof($list_classrooms); $i++) {
 								echo "<tr>";
 
 								echo "<td>";
-								echo $classroom->classroom_number;
+								echo $list_classrooms[$i]->classroom_number;
 								echo "</td>";
 
 								echo "<td>";
-								echo $classroom->lead;
+								echo $list_classrooms[$i]->lead;
 								echo "</td>";
 
 								echo "<td>";
-								echo $classroom->assistant;
+								echo $list_classrooms[$i]->assistant;
 								echo "</td>";
 
 								echo "<td>";
-								echo "<a href=\"classrooms/delete.php?id=" . $classroom->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
+								echo "<a href=\"classrooms/delete.php?id=" . $list_classrooms[$i]->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
 								echo "</td>";
 
 								echo "</tr>";

@@ -9,6 +9,7 @@
 		public $birth_date;
 		public $age_group;
 		public $classroom_id;
+		public static $groups = array("None", "Infants", "Toddlers", "Primary");
 
 		public function __construct($first, $last, $dob, $ageGroup, $classroom)
 		{
@@ -19,12 +20,16 @@
 			$this->classroom_id = $classroom;
 		}
 
-		public static $sql_select = "SELECT * FROM student;";
-
-		public static function loadStudents() {
+		public function searchFor($student){
 			global $db;
 			$all_students = [];
-			$results = $db->query("SELECT * FROM student;");
+			$results = $db->query("SELECT *
+									FROM student
+									WHERE first_name LIKE '%$student%' 
+									OR last_name LIKE '%$student%'
+									OR birth_date LIKE '%$student%' 
+									OR age_group LIKE '%$student%'
+									OR classroom_id LIKE '%$student%';");
 
 			while ($row = $results->fetch_assoc()) {
 				$student = new Student($row["first_name"], $row["last_name"], $row["birth_date"], $row["age_group"], $row["classroom_id"]);
@@ -32,7 +37,23 @@
 				array_push($all_students, $student);
 			}
 			$results->free();
-			$db->close();
+			return $all_students;
+		}
+		public static function loadStudents() {
+			global $db;
+			$all_students = [];
+			// $results = $db->query("SELECT * FROM student;");
+			$results = $db->query("SELECT s.student_id, s.first_name, s.last_name, s.birth_date, s.age_group, c.classroom_id, c.classroom_number
+									FROM student s, classroom c
+									WHERE s.classroom_id = c.classroom_id
+									ORDER BY s.student_id");
+
+			while ($row = $results->fetch_assoc()) {
+				$student = new Student($row["first_name"], $row["last_name"], $row["birth_date"], $row["age_group"], $row["classroom_number"]);
+				$student->id = $row["student_id"];
+				array_push($all_students, $student);
+			}
+			$results->free();
 			return $all_students;
 		}
 
@@ -45,6 +66,8 @@
 			$this->birth_date = $db->real_escape_string($this->birth_date);
 			$this->age_group = $db->real_escape_string($this->age_group);
 			$this->classroom_id = $db->real_escape_string($this->classroom_id);
+
+			// echo $this->age_group;
 
 			$create_query = "INSERT INTO student (first_name, last_name, birth_date, age_group, classroom_id) VALUES ('{$this->first_name}', '{$this->last_name}', '{$this->birth_date}', '{$this->age_group}', '{$this->classroom_id}')";
 
@@ -59,7 +82,10 @@
 			global $db;
 
 	 		//create and execute a query
-	 		$results = $db->query("SELECT * FROM student WHERE student_id = $id");
+	 		$results = $db->query("SELECT s.student_id, s.first_name, s.last_name, s.birth_date, s.age_group, c.classroom_id, c.classroom_number
+									FROM student s, classroom c
+									WHERE s.student_id = $id AND s.classroom_id = c.classroom_id
+									ORDER BY s.student_id");
 
 	 		//get the first row of the return from the query
 	 		$row = $results->fetch_assoc();
@@ -81,6 +107,8 @@
 			$this->birth_date = $db->real_escape_string($bday);
 			$this->age_group = $db->real_escape_string($ageGroup);
 			$this->classroom_id = $db->real_escape_string($classroom);
+
+			// echo $this->age_group;
 
 			$update_query = "UPDATE student SET first_name = '$this->first_name', last_name = '$this->last_name', birth_date = '$this->birth_date', age_group = '$this->age_group', classroom_id = '$this->classroom_id' WHERE student_id = $this->id";
 

@@ -1,5 +1,11 @@
 <?php
+	$title = "New Student";
 	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+	include $_SERVER['DOCUMENT_ROOT'] . '/classrooms/classroom.php';
+	include("students.php");
+	$classroom = new Classroom(NULL, NULL, NULL);
+	$list_classrooms = $classroom->loadClassrooms();
+	$db->close();
 ?>
 
 <div class="container">
@@ -27,20 +33,18 @@
 						</div>
 						<div class="form-group">
 							<label for="age_group">Age Group</label>
-							<select class="form-control" type="text" name="age_group" placeholder="Age Group">
-								<option value="0">Select...</option>
-								<option value="1">Infants</option>
-								<option value="2">Toddlers</option>
-								<option value="3">Primary</option>
+							<select class="form-control" type="text" name="age_group">
+								<?php for ($i = 0; $i < sizeof(Student::$groups); $i++) {
+									echo "<option value=" . $i . ">" . Student::$groups[$i] . "</option>"; 
+								}?>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="classroom_id">Classroom</label>
 							<select class="form-control" type="text" name="classroom_id">
-								<option value="0">Select...</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+								<?php for ($i = 1; $i < sizeof($list_classrooms); $i++) {
+									echo "<option value=" . $list_classrooms[$i]->id . ">" . $list_classrooms[$i]->classroom_number . "</option>";
+								}?>
 							</select>
 						</div>
 						<button class="btn btn-primary" type="submit">Create</button>

@@ -3,7 +3,7 @@
 	include("../includes/db_connect.php");
 	include("teachers.php");
 
-	$teacher = new Teacher("","","","","");
+	$teacher = new Teacher("","","","","","");
 
 
 	echo "<div class=\"wrapper\">";
@@ -15,4 +15,5 @@
 	}
 	echo "    </div>";
 	echo "</div>";
+	$db->close();
 ?>

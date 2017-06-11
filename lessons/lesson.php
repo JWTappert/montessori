@@ -30,7 +30,6 @@
 				array_push($all_lessons, $lesson);
 			}
 			$results->free();
-			$db->close();
 			return $all_lessons;
 		}
 

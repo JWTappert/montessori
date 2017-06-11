@@ -15,4 +15,5 @@
 	}
 	echo "    </div>";
 	echo "</div>";
+	$db->close();
 ?>

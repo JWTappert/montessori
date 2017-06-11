@@ -1,5 +1,11 @@
-<?php
+<?
+	$title = "New Teacher";
 	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
+	include $_SERVER['DOCUMENT_ROOT'] . '/teachers/teachers.php';
+
+	$teacher = new Teacher(NULL, NULL, NULL, NULL, NULL, NULL);
+	$list_teachers = $teacher->loadTeachers();
+	$db->close();
 ?>
 
 <div class="container">
@@ -36,13 +42,12 @@
 						<div class="form-group">
 							<label for="teacher_id">Teacher</label>
 							<select class="form-control" type="text" name="teacher_id">
-								<option value="0">Select...</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
+								<?php for ($i = 1; $i < sizeof($list_teachers); $i++) {
+									echo "<option value=" . $list_teachers[$i]->id . ">" . $list_teachers[$i]->first_name . " " . $list_teachers[$i]->last_name . "</option>";
+								}?>
 							</select>
 						</div>
-						<button class="btn btn-info" type="submit">Createbutton>
+						<button class="btn btn-info" type="submit">Create</button>
 					</form>
 				</div>
 

@@ -21,4 +21,5 @@
 	echo "<h1 style=\"text-align: center;\">"; echo "$output"; echo "</h1>";
 	echo "    </div>";
 	echo "</div>";
+	$db->close();
 ?>

@@ -2,6 +2,7 @@
 	$title = "Update Student Info";
 	include("../includes/header.php");
 	include("../students/students.php");
+	include("../classrooms/classroom.php");
 
 	$updateStudent = new Student(NULL, NULL, NULL, NULL, NULL, NULL);
 	$updateStudent->displayStudentInfo($_GET["id"]);
@@ -14,6 +15,9 @@
 			echo "ERROR: Could not execute"; //. mysqli_error($db);
 		}
 	}
+	$classroom = new Classroom(NULL, NULL, NULL);
+	$list_classrooms = $classroom->loadClassrooms();
+	$db->close();
 ?>
 
 <div class="container">
@@ -40,11 +44,27 @@
 						</div>
 						<div class="form-group">
 							<label for="age_group">Age Group</label>
-							<input class="form-control" type="text" name="age_group" value="<?php echo $updateStudent->age_group; ?>">
+							<select class="form-control" type="text" name="age_group">
+								<?php for ($i = 0; $i < sizeof(Student::$groups); $i++) {
+									if ($i == $updateStudent->age_group){
+										echo "<option value=" . $i . " selected='selected'>" . Student::$groups[$i] . "</option>"; 
+									}else{
+										echo "<option value=" . $i . ">" . Student::$groups[$i] . "</option>"; 
+									}
+								}?>
+							</select>
 						</div>
 						<div class="form-group">
 							<label for="classroom_id">Classroom</label>
-							<input class="form-control" type="text" name="classroom_id" value="<?php echo $updateStudent->classroom_id; ?>">
+							<select class="form-control" type="text" name="classroom_id">
+								<?php for ($i = 1; $i < sizeof($list_classrooms); $i++) {
+									if ($i == $updateStudent->classroom_id) {
+										echo "<option value=" . $i . " selected='selected'>" . $list_classrooms[$i]->classroom_number . "</option>";
+									}else{
+										echo "<option value=" . $i . ">" . $list_classrooms[$i]->classroom_number . "</option>";
+									}
+								}?>
+							</select>
 						</div>
 						<button class="btn btn-primary" type="submit" name="update">Update</button>
 					</form>

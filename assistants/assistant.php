@@ -24,7 +24,10 @@
 		public static function loadAssistants() {
 			global $db;
 			$all_assistants = [];
-			$results = $db->query("SELECT a.first_name, a.last_name, a.birth_date, a.phone, a.email, CONCAT(t.first_name, ' ', t.last_name) as 'Teachers'
+			$defaultAssistant = new Assistant(NULL, NULL, NULL, NULL, NULL, NULL);
+			$defaultAssistant->id = 0;
+			array_push($all_assistants, $defaultAssistant);
+			$results = $db->query("SELECT a.assistant_id, a.first_name, a.last_name, a.birth_date, a.phone, a.email, CONCAT(t.first_name, ' ', t.last_name) as 'Teachers'
 									FROM assistant a, teacher t
 									WHERE a.teacher_id = t.teacher_id
 									GROUP BY a.assistant_id;");
@@ -35,7 +38,6 @@
 				array_push($all_assistants, $assistant);
 			}
 			$results->free();
-			$db->close();
 			return $all_assistants;
 		}
 

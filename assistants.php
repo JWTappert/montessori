@@ -5,6 +5,7 @@
 
 	$assistant = new Assistant(NULL, NULL, NULL, NULL, NULL, NULL);
 	$list_assistants = $assistant->loadAssistants();
+	$db->close();
 ?>
 
 <div class="container">
@@ -27,37 +28,37 @@
 								<th>Teachers</th>
 								<th><a href="assistants/form.php" class="btn btn-info" role="button">New</a></th>
 							</tr>
-							<?php foreach ($list_assistants as $assistant) {
+							<?php for ($i = 1; $i < sizeof($list_assistants); $i++) {
 								echo "<tr>";
 
 								echo "<td>";
-								echo "<a href=\"assistants/update.php?id=" . $assistant->id . "\">";
-								echo $assistant->first_name;
+								echo "<a href=\"assistants/update.php?id=" . $list_assistants[$i]->id . "\">";
+								echo $list_assistants[$i]->first_name;
 								echo "</a>";
 								echo "</td>";
 
 								echo "<td>";
-								echo $assistant->last_name;
+								echo $list_assistants[$i]->last_name;
 								echo "</td>";
 
 								echo "<td>";
-								echo $assistant->birth_date;
+								echo $list_assistants[$i]->birth_date;
 								echo "</td>";
 
 								echo "<td>";
-								echo $assistant->phone;
+								echo $list_assistants[$i]->phone;
 								echo "</td>";
 
 								echo "<td>";
-								echo $assistant->email;
+								echo $list_assistants[$i]->email;
 								echo "</td>";
 
 								echo "<td>";
-								echo $assistant->teacher_id;
+								echo $list_assistants[$i]->teacher_id;
 								echo "</td>";
 
 								echo "<td>";
-								echo "<a href=\"assistants/delete.php?id=" . $assistant->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
+								echo "<a href=\"assistants/delete.php?id=" . $list_assistants[$i]->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
 								echo "</td>";
 
 								echo "</tr>";

@@ -14,6 +14,7 @@
 			echo "ERROR: Could not execute"; //. mysqli_error($db);
 		}
 	}
+	$db->close();
 ?>
 
 <div class="container">

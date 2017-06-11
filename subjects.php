@@ -5,6 +5,7 @@
 
 	$subject = new Subject(NULL);
 	$list_subjects = $subject->loadSubjects();
+	$db->close();
 ?>
 
 <div class="container">
@@ -24,19 +25,19 @@
 								<th>Subject Name</th>
 								<th><a href="subjects/form.php" class="btn btn-default" role="button">New</a></th>
 							</tr>
-							<?php foreach ($list_subjects as $subject) {
+							<?php for ($i = 1; $i < sizeof($list_subjects); $i++) {
 								echo "<tr>";
 
 								echo "<td>";
-								echo $subject->subject_id;
+								echo $list_subjects[$i]->subject_id;
 								echo "</td>";
 
 								echo "<td>";
-								echo $subject->type;
+								echo $list_subjects[$i]->type;
 								echo "</td>";
 
 								echo "<td>";
-								echo "<a href=\"subjects/delete.php?id=" . $subject->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
+								echo "<a href=\"subjects/delete.php?id=" . $list_subjects[$i]->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
 								echo "</td>";
 
 								echo "</tr>";
