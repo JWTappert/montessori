@@ -2,6 +2,7 @@
 	$title = "Home";
 	include("includes/header.php");
 ?>
-		<h1>Hello World</h1>
+		<h1>Final Project: CS 340</h1>
+		<p>A simple database to model a montessori school structure. Tables: Students, Teachers, Assistants, Classrooms, Lessons, Subjects.</p>
 	</body>
 </html>

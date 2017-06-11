@@ -4,6 +4,9 @@
 		<title><?php echo $title ?></title>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://use.fontawesome.com/63a9b81731.js"></script>
 	</head>
@@ -23,7 +26,7 @@
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="/students.php">Students <span class="sr-only">(current)</span></a></li>
+	        <li><a href="/students.php">Students </a></li>
 	        <li><a href="/teachers.php">Teachers </a></li>
 	        <li><a href="/assistants.php">Assistants </a></li>
 	        <li><a href="/classrooms.php">Classrooms </a></li>
