@@ -1,7 +1,7 @@
 <?php
 	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
 
-	class lesson
+	class Lesson
 	{
 		public $id;
 		public $name;
@@ -22,7 +22,7 @@
 			$results = $db->query("select l.lesson_id, l.name, l.description, s.type
 									from lesson l, subject s
 									where l.type_id = s.subject_id
-									order by l.lesson_id");
+									order by s.type");
 
 			while ($row = $results->fetch_assoc()) {
 				$lesson = new Lesson($row["name"], $row["description"], $row["type"]);

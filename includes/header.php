@@ -32,6 +32,7 @@
 	        <li><a href="/classrooms.php">Classrooms </a></li>
 	        <li><a href="/lessons.php">Lessons </a></li>
 	        <li><a href="/subjects.php">Subjects </a></li>
+	        <li><a href="/student_lesson.php">Completed Lessons </a></li>
 	      </ul>
 	      </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
