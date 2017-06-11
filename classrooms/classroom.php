@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
+	//include("../includes/db_connect.php");
 
 	class Classroom
 	{
@@ -17,7 +17,7 @@
 
 		public static function loadClassrooms() {
 			global $db;
-			$all_classrooms = [];
+			$all_classrooms = array();
 			$defaultClassroom = new Classroom(NULL, NULL, NULL);
 			$defaultClassroom->id = 0;
 			array_push($all_classrooms, $defaultClassroom);

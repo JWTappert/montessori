@@ -2,7 +2,7 @@
 	$title = "Update assistant Info";
 	include("../includes/header.php");
 	include("../assistants/assistant.php");
-	include $_SERVER['DOCUMENT_ROOT'] . '/teachers/teachers.php';
+	include("../teachers/teachers.php");
 
 	$updateassistant = new Assistant(NULL, NULL, NULL, NULL, NULL, NULL);
 	$updateassistant->displayAssistantInfo($_GET["id"]);

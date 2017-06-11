@@ -1,8 +1,8 @@
 <?php
 	$title = "New Student";
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/classrooms/classroom.php';
-	include("students.php");
+	include("../includes/header.php");
+	include("../classrooms/classroom.php");
+	include("../students/students.php");
 	$classroom = new Classroom(NULL, NULL, NULL);
 	$list_classrooms = $classroom->loadClassrooms();
 	$db->close();

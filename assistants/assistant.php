@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
+	//include("/includes/db_connect.php");
 
 	class Assistant
 	{
@@ -23,7 +23,7 @@
 
 		public static function loadAssistants() {
 			global $db;
-			$all_assistants = [];
+			$all_assistants = array();
 			$defaultAssistant = new Assistant(NULL, NULL, NULL, NULL, NULL, NULL);
 			$defaultAssistant->id = 0;
 			array_push($all_assistants, $defaultAssistant);

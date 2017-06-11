@@ -1,8 +1,8 @@
 <?php 
 
-	$dbserver = "localhost";
-	$dbusername = "root";
-	$dbpassword = "password";
+	$dbhost = "localhost";
+	$dbuser = "root";
+	$dbpass = "password";
 	$dbname = "montessori";
 
 	// $dbhost = 'oniddb.cws.oregonstate.edu';
@@ -10,7 +10,7 @@
 	// $dbuser = 'tappertj-db';
 	// $dbpass = 'wAyJRbK8nYMU7hir';
 
-	$db = new mysqli($dbserver, $dbusername, $dbpassword, $dbname);
+	$db = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
 	if ($db->connect_error) {
 		echo $db->connect_error;

@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
+	//include("../includes/db_connect.php");
 
 	class Subject
 	{
@@ -13,7 +13,7 @@
 
 		public static function loadSubjects() {
 			global $db;
-			$all_subjects = [];
+			$all_subjects = array();
 			$results = $db->query("SELECT * FROM subject;");
 
 			$defaultSubject = new Subject(NULL);

@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
+	//include_once(dirname(__FILE__) . "../includes/db_connect.php");
 
 	class Student
 	{
@@ -22,7 +22,7 @@
 
 		public function searchFor($student){
 			global $db;
-			$all_students = [];
+			$all_students = array();
 			$results = $db->query("SELECT *
 									FROM student
 									WHERE first_name LIKE '%$student%' 
@@ -41,7 +41,7 @@
 		}
 		public static function loadStudents() {
 			global $db;
-			$all_students = [];
+			$all_students = array();
 			// $results = $db->query("SELECT * FROM student;");
 			$results = $db->query("SELECT s.student_id, s.first_name, s.last_name, s.birth_date, s.age_group, c.classroom_id, c.classroom_number
 									FROM student s, classroom c
@@ -139,9 +139,4 @@
 	 	}
 
 	}
-
-
-
-
-
 ?>

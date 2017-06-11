@@ -1,7 +1,7 @@
 <?php
 	$title = "New Lesson";
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/subjects/subject.php';
+	include("../includes/header.php");
+	include("../subjects/subject.php");
 
 	$subject = new Subject(NULL);
 	$list_subjects = $subject->loadSubjects();

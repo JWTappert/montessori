@@ -1,8 +1,8 @@
 <?
 	$title = "New Classroom";
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/assistants/assistant.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/teachers/teachers.php';
+	include("../includes/header.php");
+	include("../assistants/assistant.php");
+	include("../teachers/teachers.php");
 
 	$assistant = new Assistant(NULL, NULL, NULL, NULL, NULL, NULL);
 	$list_assistants = $assistant->loadAssistants();

@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
+	//include("../includes/db_connect.php");
 
 	class Lesson
 	{
@@ -18,7 +18,7 @@
 
 		public static function loadLessons() {
 			global $db;
-			$all_lessons = [];
+			$all_lessons = array();
 			$results = $db->query("SELECT l.lesson_id, l.name, l.description, s.type
 									FROM lesson l, subject s
 									WHERE l.type_id = s.subject_id

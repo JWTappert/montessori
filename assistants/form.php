@@ -1,7 +1,7 @@
 <?
 	$title = "New Teacher";
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/teachers/teachers.php';
+	include("../includes/header.php");
+	include("../teachers/teachers.php");
 
 	$teacher = new Teacher(NULL, NULL, NULL, NULL, NULL, NULL);
 	$list_teachers = $teacher->loadTeachers();

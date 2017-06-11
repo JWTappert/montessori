@@ -1,8 +1,8 @@
 <?php
 	$title = "Update Student Info";
-	include("../includes/header.php");
-	include("../students/students.php");
-	include("../classrooms/classroom.php");
+	include_once("../includes/header.php");
+	include_once("../students/students.php");
+	include_once("../classrooms/classroom.php");
 
 	$updateStudent = new Student(NULL, NULL, NULL, NULL, NULL, NULL);
 	$updateStudent->displayStudentInfo($_GET["id"]);

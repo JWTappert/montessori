@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php  
+	include_once(dirname(__FILE__) . "/db_connect.php");
+?>
 <html lang="en">
 	<head>
 		<title><?php echo $title ?></title>

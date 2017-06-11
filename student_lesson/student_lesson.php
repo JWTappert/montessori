@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connect.php';
+	//include("../includes/db_connect.php");
 
 	class Student_Lesson
 	{
@@ -16,7 +16,7 @@
 
 		public static function load() {
 			global $db;
-			$all = [];
+			$all = array();
 			$results = $db->query("SELECT s.student_id, CONCAT(s.first_name, ' ', s.last_name) as 'Student', l.lesson_id, l.name as 'Lesson'
 									FROM student s
 									LEFT JOIN student_lesson sl ON sl.s_id = s.student_id

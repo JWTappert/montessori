@@ -1,8 +1,8 @@
 <?php
 	$title = "New Relationship";
-	include $_SERVER['DOCUMENT_ROOT'] . '/includes/header.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/students/students.php';
-	include $_SERVER['DOCUMENT_ROOT'] . '/lessons/lesson.php';
+	include("../includes/header.php");
+	include("../students/students.php");
+	include("../lessons/lesson.php");
 
 	$student = new Student(NULL, NULL, NULL, NULL, NULL, NULL);
 	$list_students = $student->loadStudents();
