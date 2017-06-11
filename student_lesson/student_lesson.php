@@ -54,10 +54,11 @@
 	 		global $db;
 
 	 		//get the id to be deleted
-	 		$idToDelete = $_GET["id"];
+	 		$lessonToDelete = $_GET["lesson_id"];
+	 		$student = $_GET["student_id"];
 
 	 		//create a query
-	 		$delete_query = $db->query("DELETE FROM student_lesson WHERE l_id = $idToDelete");
+	 		$delete_query = $db->query("DELETE FROM student_lesson WHERE l_id = $lessonToDelete AND s_id = $student");
 
 	 		//test to see if it was successful
 	 		if($delete_query) {

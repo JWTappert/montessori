@@ -37,7 +37,7 @@
 								echo "</td>";
 
 								echo "<td>";
-								echo "<a href=\"subjects/delete.php?id=" . $list_subjects[$i]->id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
+								echo "<a href=\"subjects/delete.php?id=" . $list_subjects[$i]->subject_id . "\" class=\"btn btn-danger\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
 								echo "</td>";
 
 								echo "</tr>";

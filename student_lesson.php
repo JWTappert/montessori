@@ -36,7 +36,7 @@
 								echo "</td>";
 
 								echo "<td>";
-								echo "<a href=\"student_lesson/delete.php?id=" . $one->lesson_id . "\" class=\"btn btn-primary\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
+								echo "<a href=\"student_lesson/delete.php?lesson_id=" . $one->lesson_id . "&student_id=" . $one->student_id . "\" class=\"btn btn-primary\" role=\"button\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
 								echo "</td>";
 
 								echo "</tr>";

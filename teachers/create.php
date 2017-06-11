@@ -1,6 +1,6 @@
 <?php
 	include("../includes/header.php");
-	include("../includes/db_connect.php");
+	//include("../includes/db_connect.php");
 	include("teachers.php");
 
 	$success = "Record saved successfully";
